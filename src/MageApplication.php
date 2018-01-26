@@ -46,7 +46,7 @@ class MageApplication extends Application
         $dispatcher = new EventDispatcher();
         $this->setDispatcher($dispatcher);
 
-        $dispatcher->addListener(ConsoleEvents::EXCEPTION, function (ConsoleExceptionEvent $event) {
+        $dispatcher->addListener(ConsoleEvents::ERROR, function (ConsoleExceptionEvent $event) {
             $output = $event->getOutput();
             $command = $event->getCommand();
             $output->writeln(sprintf('Oops, exception thrown while running command <info>%s</info>', $command->getName()));
